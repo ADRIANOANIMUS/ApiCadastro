@@ -32,6 +32,8 @@ router.post('/authenticate', async (req, res) => {
     if(!await bcrypt.compare(password, user.password))
     return res.status(400).send({error: 'Invalid password'})
 
+    res.send({ user })
+
 })
 
 module.exports = app => app.use('/auth', router)
