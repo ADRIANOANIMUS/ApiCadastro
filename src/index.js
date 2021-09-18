@@ -5,7 +5,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-require('./controllers/index')(app)
+require('./app/controllers/index')(app)
 
 
 
