@@ -45,4 +45,19 @@ router.post('/authenticate', async (req, res) => {
 
 })
 
+router.post('/forgot_password', async (req, res) => {
+    const {email} = req.body
+
+    try{
+        const user = await User.findOne({email})
+
+        if(!user)
+        return res.status(400).send({error: 'User not found'})  
+
+    }catch(err){
+        res.status(400).send({error: 'Erro on forgot password, try again'}) 
+    }
+
+})
+
 module.exports = app => app.use('/auth', router)
